@@ -48,10 +48,10 @@ class MyApp extends StatelessWidget {
             child: Column( //выравнивание сожержимого в колонку
                children: [ //перечисление содержимого внутри колонки установлено по умолчанию константой
 
-                  const SizedBox(height: 81), //отступ сверху
-                  //логотип
-                  const SizedBox(width: 103, height: 79.42, //ширина и высота коробки в которой будет содержимое
-                    child: Image(image: AssetImage('assets/img.png')),), //ссылаемся на картинку в папке, требуется прописать в pub spec yaml настройку
+                  // const SizedBox(height: 81), //отступ сверху
+                  // //логотип
+                  // const SizedBox(width: 103, height: 79.42, //ширина и высота коробки в которой будет содержимое
+                  //   child: Image(image: AssetImage('assets/img.png')),), //ссылаемся на картинку в папке, требуется прописать в pub spec yaml настройку
 
                   const SizedBox(height: 18.58,), //отступ
                   //текст
@@ -77,7 +77,6 @@ class MyApp extends StatelessWidget {
                       enabledBorder: borderStyle, //отображение границ окна ввода до нажатия, см. общую константу
                       focusedBorder: borderStyle, //отображение границ окна ввода после нажатия-фокусировки см. общую константу
                       labelText: 'Номер телефона', //текст на фоне
-                      hintText: '+7',
                     ),
                   ),
 
@@ -91,7 +90,6 @@ class MyApp extends StatelessWidget {
                      enabledBorder: borderStyle, //отображение границ окна ввода до нажатия, см. общую константу
                      focusedBorder: borderStyle, //отображение границ окна ввода после нажатия-фокусировки см. общую константу
                       labelText: 'Пароль',
-                      hintText: '******',
                     ),
                   ),
 
