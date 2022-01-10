@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold( //общий каркас для контейнеров и т.п.
         backgroundColor: const Color(0xffffffff), //установка цвета общего фона
         body: Container( //контейнер для наполнения содержимым
-          padding: const EdgeInsets.symmetric(horizontal: 50), //симметричный горизонтальный отступ
+          padding: const EdgeInsets.symmetric(horizontal: 10), //симметричный горизонтальный отступ
           child: SingleChildScrollView( //прокрутка страницы содержимого внутри скобок
             child: Column( //построение содержимого в колонку
               children: [ //перечисление содержимого внутри колонки установлено по умолчанию константой
@@ -66,20 +66,32 @@ class MyApp extends StatelessWidget {
                   color: Color.fromRGBO(196, 196, 196, 1.0),
                 ),
 
-                const SizedBox(height: 18.58), //отступ
+                const SizedBox(height: 7), //отступ
                 //текст
                 Text(
                   'Чтобы зарегистрироваться введите\n свой номер телефона и почту', //текст к выводу
                   textAlign: TextAlign.center,//текст к выводу
                   style: GoogleFonts.roboto( //стиль шрифта
                     fontStyle: FontStyle.normal, //наклон шрифта
-                    fontWeight: FontWeight.normal, //жирность шрифта 400
-                    fontSize: 16, //размер шрифта в пикселях
+                    fontWeight: FontWeight.w400, //жирность шрифта 400
+                    fontSize: 19, //размер шрифта в пикселях
                     letterSpacing: -0.015, //межбуквенный интервал
-                    color: const Color.fromRGBO(0, 0, 0, 0.6), //цвет текста
+                    color: const Color.fromRGBO(196, 196, 196, 1.0), //цвет текста
                   ),
                 ),
-                const SizedBox(height: 20,), //отступ
+                const SizedBox(height: 14), //отступ
+                //заголовок
+                Text('Телефон',
+                    style: GoogleFonts.roboto(
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                          letterSpacing: -0.015,
+                          color: Color.fromRGBO(0, 0, 0, 0.6),
+                        ))),
+
+                const SizedBox(height: 6), //отступ
+
                 //поле ввода телефона
                 const TextField(
                   keyboardType: TextInputType.phone, //способ вывода клавиатуры
@@ -88,13 +100,26 @@ class MyApp extends StatelessWidget {
                     fillColor: Color(0xFFeceff1), //цвет декорации
                     enabledBorder: borderStyle, //отображение границ окна ввода до нажатия, см. общую константу
                     focusedBorder: borderStyle, //отображение границ окна ввода после нажатия-фокусировки см. общую константу
-                    //labelText: 'Телефон', //отображаемый текст до нажатия
+                    // labelText: '+7', //отображаемый текст до нажатия
                     hintText: '+7', //отображаемый текст при активации окна
                   ),
                 ),
 
-                const SizedBox(height: 20,), //отступ
-                //поле ввода пароля
+                const SizedBox(height: 14,), //отступ
+
+                //заголовок
+                Text('Почта',
+                    style: GoogleFonts.roboto(
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                          letterSpacing: -0.015,
+                          color: Color.fromRGBO(0, 0, 0, 0.6),
+                        ))),
+
+                const SizedBox(height: 6,), //отступ
+
+                //поле ввода почты
                 const TextField(
                   obscureText: true, //скрыть пароль при введении
                   decoration: InputDecoration(
@@ -105,7 +130,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
 
-                  const SizedBox(width: 103, height: 79.42),
+                  const SizedBox(height: 24),
                     Text(
                       'Вам придет четырехзначный код,\n который будет вашим паролем', //текст к выводу
                       textAlign: TextAlign.center,//текст к выводу
@@ -119,7 +144,7 @@ class MyApp extends StatelessWidget {
                     ),
 
                 //отступ
-                const SizedBox(height: 18.58,), //отступ
+                const SizedBox(height: 14), //отступ
                 //текст
                 Text(
                   'Изменить пароль можно\n будет в личном кабинете после\n регистрации', //текст к выводу
@@ -133,7 +158,8 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 28,), //отступ
+                const SizedBox(height: 32), //отступ
+
                 //кнопка, добавить остальные атрибуты шрифта
                 SizedBox(width: 154, height: 42, child:
                 ElevatedButton(onPressed: () {},
