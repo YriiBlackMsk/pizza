@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                      'Введите логин в виде 10 цифр\n номера телефона', //текст к выводу
                      textAlign: TextAlign.center,//текст к выводу
                      style: GoogleFonts.roboto( //стиль шрифта
-                     textStyle: Theme.of(context).textTheme.headline4,
+                     // textStyle: Theme.of(context).textTheme.headline4,
                      fontStyle: FontStyle.normal, //наклон шрифта
                      fontWeight: FontWeight.normal, //жирность шрифта 400
                      fontSize: 16, //размер шрифта в пикселях
@@ -76,8 +76,8 @@ class MyApp extends StatelessWidget {
                       fillColor: Color(0xFFeceff1), //цвет декорации
                       enabledBorder: borderStyle, //отображение границ окна ввода до нажатия, см. общую константу
                       focusedBorder: borderStyle, //отображение границ окна ввода после нажатия-фокусировки см. общую константу
-                      labelText: 'Номер телефона', //текст на фоне
-                      hintText: '+7',
+                      labelText: 'Номер телефона', //отображаемый текст до нажатия
+                      hintText: '+7', //отображаемый текст при активации окна
                     ),
                   ),
 
@@ -90,8 +90,8 @@ class MyApp extends StatelessWidget {
                       fillColor: Color(0xFFeceff1),
                      enabledBorder: borderStyle, //отображение границ окна ввода до нажатия, см. общую константу
                      focusedBorder: borderStyle, //отображение границ окна ввода после нажатия-фокусировки см. общую константу
-                      labelText: 'Пароль',
-                      hintText: '******',
+                      labelText: 'Пароль', //отображаемый текст до нажатия
+                      hintText: '******', //отображаемый текст при активации окна
                     ),
                   ),
 
