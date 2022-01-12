@@ -65,6 +65,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                 const SizedBox(
                   height: 62,
                   ),
+
                 SizedBox(
                   height: 100,
                   child: Image.asset('assets/dart-logo 3.png'),
