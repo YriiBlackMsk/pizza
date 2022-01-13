@@ -98,16 +98,16 @@ class MyApp extends StatelessWidget {
                   const SizedBox(height: 28,), //отступ
                   //кнопка, добавить остальные атрибуты шрифта
                   SizedBox(width: 154, height: 42, child:
-                  ElevatedButton(onPressed: () {},
-                    child: const Text('Войти'),
-                    style: ElevatedButton.styleFrom( //формат кнопка
-                      primary: const Color(0xFF0079D0), //цвет
-                      shape: RoundedRectangleBorder( //форма Rectangle-прямоугольник
-                        borderRadius: BorderRadius.circular(22.0), //радиус скргленный
+                    ElevatedButton(onPressed: () {},
+                      child: const Text('Войти'),
+                      style: ElevatedButton.styleFrom( //формат кнопка
+                        primary: const Color(0xFF0079D0), //цвет
+                        shape: RoundedRectangleBorder( //форма Rectangle-прямоугольник
+                          borderRadius: BorderRadius.circular(22.0), //радиус скргленный
+                          ),
                         ),
                       ),
                     ),
-                  ),
                  const SizedBox(height: 62,), //отступ
                  //ссылка
                  InkWell(child: const Text('Регистрация',

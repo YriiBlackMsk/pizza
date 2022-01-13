@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
                 Row( //построение содержимого в ряд
                    crossAxisAlignment: CrossAxisAlignment.center, //выравнивание по второстепенной оси (в зависимости от row или column)
                    mainAxisAlignment: MainAxisAlignment.center, //выравнивание по главной оси (в зависимости от row или column)
-                  children: [
-                    Container( //контейнер для картинки
-                        height: 20,
-                        width: 20,
-                        child: Image.asset('assets/dart-logo 2.png')),
+                    children: [
+                      Container( //контейнер для картинки
+                          height: 20,
+                          width: 20,
+                          child: Image.asset('assets/dart-logo 2.png')),
 
                     const SizedBox(width: 9), //пробел
 

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart'; //библиотека с дизайном от андроид
 import 'package:google_fonts/google_fonts.dart'; //библиотека со шрифтами от гугл
 import 'package:sliding_switch/sliding_switch.dart'; //библиотека для кнопки (переключателя (теста)
@@ -57,94 +59,111 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme:ThemeData(
+          textTheme: GoogleFonts.interTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
       home: Scaffold(
-        body: Container(
-          width: double.infinity,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 62,
-                  ),
+        backgroundColor: const Color(0xffffffff),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              // const SizedBox(height: 81),
+              Row(
+                  crossAxisAlignment: CrossAxisAlignment.start, //выравнивание по второстепенной оси (в зависимости от row или column)
+                  mainAxisAlignment: MainAxisAlignment.end, //выравнивание по главной оси (в зависимости от row или column)
+                    children: [
+                      SizedBox( //контейнер для картинки
+                      height: 123,
+                      width: 232,
+                      child: Image.asset('assets/dart-logo 3.png')
+                      )]),
 
-                SizedBox(
-                  height: 100,
-                  child: Image.asset('assets/dart-logo 3.png'),
-                 ),
+              const SizedBox(height: 33),
 
-                Text('Калькулятор пиццы',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.inter(
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 30,
-                    color: const Color.fromRGBO(0, 0, 0, 1),
-                  ),
+              Text('Калькулятор пиццы',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 30,
+                  color: const Color.fromRGBO(0, 0, 0, 1),
                 ),
+              ),
 
-                SizedBox(height: 9),
+              const SizedBox(height: 9),
 
-                Text('Выберите параметры:',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.inter(
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: const Color.fromRGBO(0, 0, 0, 1), //цвет текста
-                  ),
+              Text('Выберите параметры:',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  color: const Color.fromRGBO(0, 0, 0, 1), //цвет текста
                 ),
+              ),
 
-                SizedBox(height: 12),
+              const SizedBox(height: 33),
 
-                SizedBox(
+              SizedBox(
+                width: 300,
+                height: 34,
+                child: SlidingSwitch(
+                  value: false,
                   width: 300,
-                  child: SlidingSwitch(
-                    value: false,
-                    width: 300,
-                    onChanged: (bool value) {
+                  onChanged: (bool value) {
                     _isSlimDough = value;
                     setState(() {
                     _calcCost();
                     });
-                    },
+                  },
+                  height: 34,
 
-                    height: 30,
-                    animationDuration : const Duration(milliseconds: 100),
-                    onTap: () {},
-                    onDoubleTap: () {},
-                    onSwipe: () {},
-                    textOff: "Обычное тесто",
-                    textOn: "Тонкое тесто",
-                    colorOn: const Color(0xffFFFFFF),
-                    colorOff: const Color(0xf0FFFFFF),
-                    background: const Color(0xffECEFF1),
-                    buttonColor: const Color(0xff0079D0),
-                    inactiveColor: const Color(0xff636f7b),
-                   ),
-                  ),
-
-                const SizedBox(height: 10),
-
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.only(top: 20, left: 20),
-                  child: const Text('Размер',
-                    style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
+                  onTap: () {},
+                  onDoubleTap: () {},
+                  onSwipe: () {},
+                  textOff: "Обычное тесто",
+                  textOn: "Тонкое тесто",
+                  colorOn: const Color(0xffFFFFFF), //текст при нажатии кнопка 1
+                  colorOff: const Color(0xffFFFFFF), //текст при нажатии кнопка 2
+                  background: const Color(0xffECEFF1), //задний фон
+                  buttonColor: const Color(0xff0079D0), //цвет кнопки
+                  inactiveColor: const Color(0xff999999), // текст не нажатый
+                 ),
                 ),
 
-                SizedBox(
-                  width: 300,
-                  child: SfSlider(
-                    min: 20,
-                    max: 60,
-                    value: _pizzaSize,
-                    interval: 20,
-                    showTicks: true,
-                    showLabels: true,
-                    numberFormat: NumberFormat("## cm"),
-                    enableTooltip: false,
-                    minorTicksPerInterval: 0,
-                    stepSize: 20,
-                    onChanged: (dynamic value){
+              const SizedBox(height: 19),
+
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.only(left: 10),
+                child: const Text('Размер:',
+                  style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18,
+                      letterSpacing: -0.015,
+                      color: Color.fromRGBO(0, 0, 0, 1)))),
+
+              const SizedBox(height: 5),
+
+              SizedBox(
+                width: 300,
+                height: 34,
+                child: SfSlider(
+                  min: 20,
+                  max: 60,
+                  value: _pizzaSize,
+                  interval: 20,
+                  showTicks: true,
+                  showLabels: true,
+                  numberFormat: NumberFormat("## cm"),
+                  enableTooltip: false,
+                  minorTicksPerInterval: 0,
+                  stepSize: 20,
+                  onChanged: (dynamic value){
                     setState(() {
                     _pizzaSize = value;
                     _calcCost();
@@ -152,111 +171,182 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                  },
                 )),
 
-                const SizedBox(height: 10),
+              const SizedBox(height: 23),
 
-                Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(top: 10, left: 20),
-                child: const Text('Соус',
-                  style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
-                ),
+              Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.only(left: 10),
+                  child: const Text('Соус',
+                      style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          letterSpacing: 2.0,
+                          color: Color.fromRGBO(38, 50, 56, 1)))),
 
-                RadioListTile<Sauce>(
-                  title: const Text ('Острый'),
-                  value: Sauce.hot,
-                  groupValue: _sauce,
-                  onChanged: _onSauceChanged,
-                  visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
-                ),
-                RadioListTile<Sauce>(
-                  title: const Text ('Кисло-сладкий'),
-                  value: Sauce.sweet,
-                  groupValue: _sauce,
-                  onChanged: _onSauceChanged,
-                  visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
-                ),
-                RadioListTile<Sauce>(
-                  title: const Text ('Сырный'),
-                  value: Sauce.cheese,
-                  groupValue: _sauce,
-                  onChanged: _onSauceChanged,
-                  visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
-                ),
+              RadioListTile<Sauce>(
+                title: const Text ('Острый',
+                    style: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        // letterSpacing: 2.0,
+                        color: Color.fromRGBO(51, 51, 51, 1))),
+                value: Sauce.hot,
+                groupValue: _sauce,
+                onChanged: _onSauceChanged,
+                activeColor: const Color.fromRGBO(93, 176, 117, 1),
+                visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
+              ),
 
-                SizedBox(
-                  width:300,
-                  child: Card(
-                    elevation: 0,
-                    color: Color(0xFFF0F0F0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+              const Divider(
+                thickness: 1,
+                height: 15,
+                color: Color.fromRGBO(232, 232, 232, 1),
+              ),
 
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            right: 20,
-                          ),
-                          child: SizedBox(
-                          width:38,
-                          height: 56,
-                            child: Image.asset('assets/dart-logo 4.png'),
-                           ),
-                          ),
+              RadioListTile<Sauce>(
+                title: const Text ('Кисло-сладкий',
+                  style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      // letterSpacing: 2.0,
+                      color: Color.fromRGBO(51, 51, 51, 1))),
+                value: Sauce.sweet,
+                groupValue: _sauce,
+                onChanged: _onSauceChanged,
+                activeColor: const Color.fromRGBO(93, 176, 117, 1),
+                visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
+              ),
 
-                        Text('Дополнительный сыр:',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.inter(
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            //letterSpacing: -0.015,
-                            color: const Color.fromRGBO(0, 0, 0, 1)
-                          )
+              const Divider( //подчеркивание, разделитель
+                thickness: 1,
+                height: 15,
+                color: Color.fromRGBO(232, 232, 232, 1),
+              ),
+
+              RadioListTile<Sauce>(
+                title: const Text ('Сырный',
+                    style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    // letterSpacing: 2.0,
+                    color: Color.fromRGBO(51, 51, 51 , 1))),
+                value: Sauce.cheese,
+                groupValue: _sauce,
+                onChanged: _onSauceChanged,
+                activeColor: const Color.fromRGBO(93, 176, 117, 1),
+                visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
+              ),
+
+              const Divider( //подчеркивание, разделитель
+                thickness: 1,
+                height: 15,
+                color: Color.fromRGBO(232, 232, 232, 1),
+              ),
+
+              const SizedBox(height: 18),
+
+              SizedBox(
+                width:291,
+                height: 56,
+                child: Card(
+                  elevation: 0,
+                  color: const Color(0xFFF0F0F0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          right: 6,
+                        ),
+                        child: SizedBox(
+                        width:36,
+                        height: 34,
+                          child: Image.asset('assets/dart-logo 4.png'),
+                         ),
                         ),
 
-                        Switch(
-                          value: _addCheese,
-                          onChanged: (bool value) {
-                           setState(() {
-                             _addCheese = value;
-                             _calcCost();
-                            });
-                           }),
-                       ],
-                    ),
+                      Text('Дополнительный сыр:',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          letterSpacing: 1,
+                          color: const Color.fromRGBO(38, 50, 56, 1)
+                        )
+                      ),
+
+                      Switch(
+                        value: _addCheese,
+                        activeColor: const Color.fromRGBO(17, 77, 164, 1),
+                        onChanged: (bool value) {
+                         setState(() {
+                           _addCheese = value;
+                           _calcCost();
+                          });
+                         }),
+                     ],
                   ),
                 ),
+              ),
 
-                Container(
+              const SizedBox(height: 10),
+
+              Container(
                   alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.only(top: 10, left: 20),
-                  child: Text('Стоимость',
-                    style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
+                  padding: const EdgeInsets.only(left: 25),
+                  child: const Text('Стоимость',
+                      style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                          letterSpacing: -1.5,
+                          color: Color.fromRGBO(0, 0, 0, 1)))),
+
+              const SizedBox(height: 10),
+
+              SizedBox(
+                width: 300,
+                height: 34,
+                child: Card(
+                  elevation: 0, //3д эффект кнопки
+                  color: const Color(0xFFECEFF1),
+                  shape: RoundedRectangleBorder(
+                   borderRadius: BorderRadius.circular(36)),
+                  child:Text('${_calcCost()} руб.',
+                    style: const TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF000000)),
+                    textAlign: TextAlign.center,
                   ),
+                ),
+              ),
 
-                SizedBox(
-                  width: 300,
-                  height: 50,
+              const SizedBox(height: 33),
 
-                  child: Card(
-                    elevation: 0,
-                    color: const Color(0xFFF0F0F0),
-                    shape: RoundedRectangleBorder(
-                     borderRadius: BorderRadius.circular(10)),
-                    child:Text('${_calcCost()} руб.',
-                      style: const TextStyle(fontSize: 32, color: Color(0xFF000000)),
-                      textAlign: TextAlign.center,
+              SizedBox(width: 154, height: 42, child:
+                ElevatedButton(onPressed: () {},
+                  child: const Text('Заказать'),
+                  style: ElevatedButton.styleFrom( //формат кнопка
+                    primary: const Color(0xFF0079D0), //цвет
+                    shape: RoundedRectangleBorder( //форма Rectangle-прямоугольник
+                      borderRadius: BorderRadius.circular(22.0), //радиус скргленный
                     ),
                   ),
                 ),
-
-              const SizedBox(height: 40),
-          ],
+              ),
+              const SizedBox(height: 30),
+           ],
+          ),
         ),
-      ),
-    )
+      )
     );
   }
 }
