@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
     );
 
      return MaterialApp( //добавить остальные атрибуты
+       debugShowCheckedModeBanner: false,
       //не работает тема, поэтому этот костыль, глобальная переменная по оформлению шрифтов, если у шрифта нет своего определения берет эту
        theme:ThemeData(
              textTheme: GoogleFonts.robotoTextTheme(

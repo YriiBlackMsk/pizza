@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
             color: Color(0xFFbbbbbb), width: 0.01)); //цвет бордюра
 
     return MaterialApp( //добавить остальные атрибуты
+      debugShowCheckedModeBanner: false,
       //не работает тема, поэтому этот костыль, глобальная переменная по оформлению шрифтов, если у шрифта нет своего определения берет эту
       theme:ThemeData(
         textTheme: GoogleFonts.robotoTextTheme(

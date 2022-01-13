@@ -81,7 +81,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                       child: Image.asset('assets/dart-logo 3.png')
                       )]),
 
-              const SizedBox(height: 33),
+              const SizedBox(height: 20),
 
               Text('Калькулятор пиццы',
                 textAlign: TextAlign.center,
@@ -329,7 +329,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                 ),
               ),
 
-              const SizedBox(height: 33),
+              const SizedBox(height: 20),
 
               SizedBox(width: 154, height: 42, child:
                 ElevatedButton(onPressed: () {},
