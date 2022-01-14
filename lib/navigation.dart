@@ -1,26 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class NavigationDrawerScreen extends StatefulWidget {
-  const NavigationDrawerScreen({Key? key}) : super(key: key);
+class NavigationDrawer extends StatefulWidget {
+  const NavigationDrawer({Key? key}) : super(key: key);
 
   @override
-  _NavigationDrawerScreenState createState() => _NavigationDrawerScreenState();
+  _NavigationDrawerState createState() => _NavigationDrawerState();
 }
 
-class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
-  final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //доступ к сообщениям
+class _NavigationDrawerState extends State<NavigationDrawer> {
+  // final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //доступ к сообщениям
+  int _selectedIndex = 0;
+  void _onItemTapped(var text) {
+  setState(() {
+  _selectedIndex = text;
+  });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      scaffoldMessengerKey: _messengerKey, //ключ для снэкбара
-      home: Scaffold(
-        appBar: AppBar(),
-        drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero, //нулевой отступ
-          children: [
-            DrawerHeader(
+    final ButtonStyle buttonStyle =
+     TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
+    return Scaffold(
+      backgroundColor: Colors.amber[200],
+      drawerDragStartBehavior: DragStartBehavior.down,
+      drawerEdgeDragWidth: 70,
+      body: const Center(child: Text('TraderCamp')),
+      appBar: AppBar(
+        title: const Text('TraderCamp'),
+        actions: <Widget>[
+          IconButton(onPressed: () {}, icon: const Icon(Icons.add_call)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+          TextButton(
+           onPressed: () {}, child: const Text('Вход'), style: buttonStyle),
+        ],
+      ),
+        drawer: SizedBox(
+          width: 250,
+        child: Drawer(
+          backgroundColor: Colors.amberAccent,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+            DrawerHeader( //c этого места!!!
                 decoration: const BoxDecoration(
                   color: Colors.blue,
                 ),
