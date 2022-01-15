@@ -1,50 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/gestures.dart';
 
-class NavigationDrawer extends StatefulWidget {
-  const NavigationDrawer({Key? key}) : super(key: key);
+class NavigationDrawer extends StatefulWidget { //(стейтфул виджет из 2х классов, изменяет вид от события является динамическим классом
+  const NavigationDrawer({Key? key}) : super(key: key); //1 класс используется для хранения переданных параметров и инициализации состояния
 
   @override
-  _NavigationDrawerState createState() => _NavigationDrawerState();
+  _NavigationDrawerState createState() => _NavigationDrawerState(); //старая запись выглядит как _NavigationDemoState createState(){return _NavigationDemoState();}
 }
 
-class _NavigationDrawerState extends State<NavigationDrawer> {
+class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс используется для отрисовки текущего состояния, реакция
   // final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //доступ к сообщениям
-  int _selectedIndex = 0;
-  void _onItemTapped(var text) {
-  setState(() {
-  _selectedIndex = text;
-  });
-  }
+  // int _selectedIndex = 0;
+  // void _onItemTapped(var text) {
+  // setState(() {
+  // _selectedIndex = text;
+  // });
+  // }
 
   @override
   Widget build(BuildContext context) {
     final ButtonStyle buttonStyle =
      TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
-      backgroundColor: Colors.amber[200],
+      backgroundColor: Colors.green[200],
       drawerDragStartBehavior: DragStartBehavior.down,
       drawerEdgeDragWidth: 70,
-      body: const Center(child: Text('TraderCamp')),
+      body: const Center(child: Text('Текст Main Screen')),
       appBar: AppBar(
-        title: const Text('TraderCamp'),
+        title: const Text('Текст AppBar '),
         actions: <Widget>[
           IconButton(onPressed: () {}, icon: const Icon(Icons.add_call)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
           TextButton(
-           onPressed: () {}, child: const Text('Вход'), style: buttonStyle),
+           onPressed: () {},
+              child: const Text('Выход'), style: buttonStyle),
         ],
       ),
         drawer: SizedBox(
           width: 250,
         child: Drawer(
-          backgroundColor: Colors.amberAccent,
+          backgroundColor: Colors.pink,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-            DrawerHeader( //c этого места!!!
+            DrawerHeader(
                 decoration: const BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.tealAccent,
                 ),
                 child: Container(
                   height: 200,
@@ -54,36 +56,52 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                     children: [
                       Container(
                         height: 100,
+                        width: 200,
                         decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(50.0))
-                        ),
+                          borderRadius: BorderRadius.all(Radius.circular(100.0))),
                         child: Image.network(
                             'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Google-flutter-logo.svg/330px-Google-flutter-logo.svg.png'
                         ),
                       ),
-                      const Text('Навигация во Flutter')
+                      const Text('Заголовок в бургере')
                     ],
                   ),
                 ),
             ),
 
             ListTile( //список
-              leading: const Icon(Icons.one_k), //иконка
-              title: const Text('Каталог'), //заголовок
+              leading: const Icon(Icons.two_k), //иконка
+              title: const Text('SecondScreen'), //заголовок
               onTap: () { //обработчик для снэкбара
-                _messengerKey.currentState!.showSnackBar(
-                  const SnackBar(content: Text('Переход в каталог')));
+                Navigator.pushNamed(context, '/2');
+                // _messengerKey.currentState!.showSnackBar(
+                //   const SnackBar(content: Text('Переход на SecondScreen')));
               },
             ),
 
+            const Divider(),
+
             ListTile(
-              leading: const Icon(Icons.two_k), //иконка
-              title: const Text('Корзина'), //заголовок
+              leading: const Icon(Icons.three_k), //иконка
+              title: const Text('ThirdScreen'), //заголовок
               onTap: () { //обработчик
-                _messengerKey.currentState!.showSnackBar(
-                  const SnackBar(content: Text('Переход в каталог')));
+                Navigator.pushNamed(context, '/3');
+                // _messengerKey.currentState!.showSnackBar(
+                //   const SnackBar(content: Text('Переход на ThirdScreen')));
               },
             ),
+
+            const Divider(),
+
+              ListTile(
+                leading: const Icon(Icons.four_k), //иконка
+                title: const Text('FourthScreen'), //заголовок
+                onTap: () { //обработчик
+                  Navigator.pushNamed(context, '/4');
+                  // _messengerKey.currentState!.showSnackBar(
+                  //   const SnackBar(content: Text('Переход на FourthScreen')));
+                },
+              ),
 
             const Divider(),
 
@@ -94,19 +112,65 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 
             ListTile(
               leading: const Icon(Icons.settings), //иконка
-              title: const Text('Корзина'), //заголовок
+              title: const Text('FifthScreen'), //заголовок
               onTap: () { //обработчик
-                _messengerKey.currentState!.showSnackBar(
-                  const SnackBar(content: Text('Переход в каталог')));
+                Navigator.pushNamed(context, '/5');
+                // _messengerKey.currentState!.showSnackBar(
+                //   const SnackBar(content: Text('Переход в каталог')));
               },
             ),
-
-          ],
+           ],
+          ),
         ),
-
-        ),
-        body: const Center(child: Text('Содержимое экрана')),
+         // body: const Center(child: Text('Содержимое экрана')),
       ),
     );
   }
 }
+/* не работает проверить
+ persistentFooterButtons: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            IconButton(
+              padding: EdgeInsets.only(left: 15),
+              splashColor: Colors.blue,
+              color: Colors.green,
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Оператор')));
+              },
+              icon: const Icon(Icons.phone_android),
+            ),
+            IconButton(
+                padding: EdgeInsets.only(left: 130),
+                color: Colors.green,
+                splashColor: Colors.blue,
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Электронная почта')));
+                },
+                icon: const Icon(Icons.mail)),
+            IconButton(
+                padding: EdgeInsets.only(left: 130),
+                splashColor: Colors.blue,
+                color: Colors.green,
+                highlightColor: Colors.white,
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('WhatsApp')));
+                },
+                icon: const Icon(Icons.message)),
+          ],
+        ),
+      ],
+
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Привет'),
+        BottomNavigationBarItem(icon: Icon(Icons.gps_fixed), label: 'Home'),
+      ], currentIndex: _selectedIndex, onTap: _onItemTapped),
+    );
+  }
+}
+
+ */
