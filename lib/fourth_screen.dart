@@ -13,7 +13,7 @@ class _FourthScreenState extends State<FourthScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.teal[200],
+          backgroundColor: Colors.green[200],
           appBar: AppBar(title: const Text('Текст Fourth Screen')),
         ));
   }

@@ -13,7 +13,7 @@ class _FifthScreenState extends State<FifthScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.teal[200],
+          backgroundColor: Colors.pink[200],
           appBar: AppBar(title: const Text('Текст Fifth Screen')),
         ));
   }

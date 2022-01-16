@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget { //1 класс используется д
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) { //описываем
+  Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/', //индексная страница, может быть либо она, либо home см. выше
       routes: { //прописываем маршруты для страниц
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget { //1 класс используется д
     },
       title: 'Заголовок',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
       home: const MainScreen(),

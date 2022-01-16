@@ -13,7 +13,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.teal[200],
+          backgroundColor: Colors.amber[200],
           appBar: AppBar(title: const Text('Текст Second Screen')),
         ));
   }

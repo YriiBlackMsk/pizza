@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/gestures.dart';
 
 class NavigationDrawer extends StatefulWidget { //(стейтфул виджет из 2х классов, изменяет вид от события является динамическим классом
@@ -10,7 +10,7 @@ class NavigationDrawer extends StatefulWidget { //(стейтфул виджет
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс используется для отрисовки текущего состояния, реакция
-  // final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //доступ к сообщениям
+  final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //доступ к сообщениям
   int _selectedIndex = 0;
   void _onItemTapped(var text) {
   setState(() {
@@ -23,7 +23,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
     final ButtonStyle buttonStyle =
      TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
-      backgroundColor: Colors.green[200],
+      backgroundColor: Colors.green[50],
       drawerDragStartBehavior: DragStartBehavior.down,
       drawerEdgeDragWidth: 70,
       body: const Center(child: Text('Текст Main Screen')),
@@ -40,7 +40,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
       drawer: SizedBox(
           width: 250,
         child: Drawer(
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.white,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -125,14 +125,13 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
       ),
 
       bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.gps_fixed), label: 'GPS локация'),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная страница'),
+        BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Позвонить'),
        ], currentIndex: _selectedIndex, onTap: _onItemTapped
       ),
 
      persistentFooterButtons: [
       Row(
-        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             child: IconButton(
@@ -140,12 +139,11 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
             color: Colors.green,
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Телефон')));
+                const SnackBar(content: Text('Контакты')));
               },
-              icon: const Icon(Icons.phone_android)),
+              icon: const Icon(Icons.work)),
           ),
           Expanded(child: IconButton(
-
             color: Colors.green,
             splashColor: Colors.blue,
             onPressed: () {
