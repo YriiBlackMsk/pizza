@@ -10,23 +10,27 @@ class NavigationDrawer extends StatefulWidget { //(стейтфул виджет
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс используется для отрисовки текущего состояния, реакция
-  final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //доступ к сообщениям
-  int _selectedIndex = 0;
+  final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //скафолд всплывающие сообшения о переходе
+  int _selectedIndex = 0; //для записи в стек
   void _onItemTapped(var text) {
   setState(() {
   _selectedIndex = text;
   });
   }
 
+
   @override
   Widget build(BuildContext context) {
     final ButtonStyle buttonStyle =
      TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
-      backgroundColor: Colors.green[50],
+      backgroundColor: Colors.lightBlue[50],
       drawerDragStartBehavior: DragStartBehavior.down,
       drawerEdgeDragWidth: 70,
-      body: const Center(child: Text('Текст Main Screen')),
+      body: const Center(
+          child: Text('Текст Main Screen'
+          ),
+      ),
       appBar: AppBar(
         title: const Text('Текст AppBar '),
         actions: <Widget>[
@@ -48,7 +52,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
                 decoration: const BoxDecoration(
                   color: Colors.tealAccent,
                 ),
-                child: Container(
+                child: SizedBox(
                   height: 200,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -74,8 +78,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
               title: const Text('SecondScreen'), //заголовок
               onTap: () { //обработчик для снэкбара
                 Navigator.pushNamed(context, '/2');
-                // _messengerKey.currentState!.showSnackBar(
-                //   const SnackBar(content: Text('Переход на SecondScreen')));
+                _messengerKey.currentState!.showSnackBar(
+                  const SnackBar(content: Text('Переход на SecondScreen')));
               },
             ),
 
@@ -86,8 +90,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
               title: const Text('ThirdScreen'), //заголовок
               onTap: () { //обработчик
                 Navigator.pushNamed(context, '/3');
-                // _messengerKey.currentState!.showSnackBar(
-                //   const SnackBar(content: Text('Переход на ThirdScreen')));
+                _messengerKey.currentState!.showSnackBar(
+                  const SnackBar(content: Text('Переход на ThirdScreen')));
               },
             ),
 
@@ -98,8 +102,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
               title: const Text('FourthScreen'), //заголовок
               onTap: () { //обработчик
                 Navigator.pushNamed(context, '/4');
-                // _messengerKey.currentState!.showSnackBar(
-                //   const SnackBar(content: Text('Переход на FourthScreen')));
+                _messengerKey.currentState!.showSnackBar(
+                  const SnackBar(content: Text('Переход на FourthScreen')));
               },
             ),
 
@@ -115,19 +119,13 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
               title: const Text('FifthScreen'), //заголовок
               onTap: () { //обработчик
                 Navigator.pushNamed(context, '/5');
-                // _messengerKey.currentState!.showSnackBar(
-                //   const SnackBar(content: Text('Переход в каталог')));
+                _messengerKey.currentState!.showSnackBar(
+                  const SnackBar(content: Text('Переход в каталог')));
               },
             ),
            ],
           ),
         ),
-      ),
-
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная страница'),
-        BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Позвонить'),
-       ], currentIndex: _selectedIndex, onTap: _onItemTapped
       ),
 
      persistentFooterButtons: [
@@ -165,6 +163,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
         ],
       ),
      ],
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная страница'),
+        BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Позвонить'),
+      ],
+          currentIndex: _selectedIndex, onTap: _onItemTapped //индексирует разобрать
+      ),
     );
   }
 }

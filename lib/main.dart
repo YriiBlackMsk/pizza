@@ -18,18 +18,17 @@ class MyApp extends StatelessWidget { //1 класс используется д
     return MaterialApp(
       initialRoute: '/', //индексная страница, может быть либо она, либо home см. выше
       routes: { //прописываем маршруты для страниц
-        // '/': (context) => const MainScreen(),
         '/2': (context) => const SecondScreen(),
         '/3': (context) => const ThirdScreen(),
         '/4': (context) => const FourthScreen(),
         '/5': (context) => const FifthScreen(),
     },
-      title: 'Заголовок',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      title: 'Что это', //за что отвечает???
+      theme: ThemeData( //задает цвет бэкграунда на аппбаре, на футере цвет иконок и текста
+        primarySwatch: Colors.red,
       ),
-      debugShowCheckedModeBanner: false,
-      home: const MainScreen(),
+      debugShowCheckedModeBanner: false, //снимает попдис debag
+      home: const MainScreen(), //путь до галвной страницы
     );
   }
 }
@@ -42,7 +41,7 @@ class MainScreen extends StatelessWidget {
     return const SafeArea(
       child: Scaffold(
         body: Center(
-          child: NavigationDrawer(),
+          child: NavigationDrawer(), //отправляет нас в класс навигации
         ),
       ),
     );

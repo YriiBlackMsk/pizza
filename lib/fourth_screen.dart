@@ -15,6 +15,7 @@ class _FourthScreenState extends State<FourthScreen> {
         child: Scaffold(
           backgroundColor: Colors.green[200],
           appBar: AppBar(title: const Text('Текст Fourth Screen')),
+          body: const Center(child: Text('Текст Fourth Screen'),),
         ));
   }
 }

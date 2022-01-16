@@ -14,7 +14,8 @@ class _FifthScreenState extends State<FifthScreen> {
     return SafeArea(
         child: Scaffold(
           backgroundColor: Colors.pink[200],
-          appBar: AppBar(title: const Text('Текст Fifth Screen')),
+          appBar: AppBar(title: const Text('Текст Fifth Screen'),),
+          body: const Center(child: Text('Текст Fifth Screen'),),
         ));
   }
 }

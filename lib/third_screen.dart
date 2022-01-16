@@ -14,7 +14,8 @@ class _ThirdScreenState extends State<ThirdScreen> {
     return SafeArea(
         child: Scaffold(
           backgroundColor: Colors.teal[200],
-          appBar: AppBar(title: const Text('Текст ThirdScreen')),
+          appBar: AppBar(title: const Text('Текст Third Screen'),),
+          body: const Center(child: Text('Текст Third Screen'),),
         ));
   }
 }
