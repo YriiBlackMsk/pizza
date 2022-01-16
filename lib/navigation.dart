@@ -11,12 +11,12 @@ class NavigationDrawer extends StatefulWidget { //(стейтфул виджет
 
 class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс используется для отрисовки текущего состояния, реакция
   // final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //доступ к сообщениям
-  // int _selectedIndex = 0;
-  // void _onItemTapped(var text) {
-  // setState(() {
-  // _selectedIndex = text;
-  // });
-  // }
+  int _selectedIndex = 0;
+  void _onItemTapped(var text) {
+  setState(() {
+  _selectedIndex = text;
+  });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
               child: const Text('Выход'), style: buttonStyle),
         ],
       ),
-        drawer: SizedBox(
+      drawer: SizedBox(
           width: 250,
         child: Drawer(
           backgroundColor: Colors.pink,
@@ -93,15 +93,15 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
 
             const Divider(),
 
-              ListTile(
-                leading: const Icon(Icons.four_k), //иконка
-                title: const Text('FourthScreen'), //заголовок
-                onTap: () { //обработчик
-                  Navigator.pushNamed(context, '/4');
-                  // _messengerKey.currentState!.showSnackBar(
-                  //   const SnackBar(content: Text('Переход на FourthScreen')));
-                },
-              ),
+            ListTile(
+              leading: const Icon(Icons.four_k), //иконка
+              title: const Text('FourthScreen'), //заголовок
+              onTap: () { //обработчик
+                Navigator.pushNamed(context, '/4');
+                // _messengerKey.currentState!.showSnackBar(
+                //   const SnackBar(content: Text('Переход на FourthScreen')));
+              },
+            ),
 
             const Divider(),
 
@@ -122,55 +122,51 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
            ],
           ),
         ),
-         // body: const Center(child: Text('Содержимое экрана')),
       ),
-    );
-  }
-}
-/* не работает проверить
- persistentFooterButtons: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            IconButton(
-              padding: EdgeInsets.only(left: 15),
-              splashColor: Colors.blue,
-              color: Colors.green,
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Оператор')));
-              },
-              icon: const Icon(Icons.phone_android),
-            ),
-            IconButton(
-                padding: EdgeInsets.only(left: 130),
-                color: Colors.green,
-                splashColor: Colors.blue,
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Электронная почта')));
-                },
-                icon: const Icon(Icons.mail)),
-            IconButton(
-                padding: EdgeInsets.only(left: 130),
-                splashColor: Colors.blue,
-                color: Colors.green,
-                highlightColor: Colors.white,
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('WhatsApp')));
-                },
-                icon: const Icon(Icons.message)),
-          ],
-        ),
-      ],
 
       bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Привет'),
-        BottomNavigationBarItem(icon: Icon(Icons.gps_fixed), label: 'Home'),
-      ], currentIndex: _selectedIndex, onTap: _onItemTapped),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.gps_fixed), label: 'GPS локация'),
+       ], currentIndex: _selectedIndex, onTap: _onItemTapped
+      ),
+
+     persistentFooterButtons: [
+      Row(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: IconButton(
+            splashColor: Colors.blue,
+            color: Colors.green,
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Телефон')));
+              },
+              icon: const Icon(Icons.phone_android)),
+          ),
+          Expanded(child: IconButton(
+
+            color: Colors.green,
+            splashColor: Colors.blue,
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text(' E-mail')));
+            },
+            icon: const Icon(Icons.mail)),
+          ),
+          Expanded(child:IconButton(
+            splashColor: Colors.blue,
+            color: Colors.green,
+            highlightColor: Colors.white,
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Chat')));
+            },
+            icon: const Icon(Icons.message)),
+          ),
+        ],
+      ),
+     ],
     );
   }
 }
-
- */
