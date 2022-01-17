@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pizza/utils/strings.dart';
 
 class FourthScreen extends StatefulWidget {
   const FourthScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _FourthScreenState extends State<FourthScreen> {
         child: Scaffold(
           backgroundColor: Colors.green[200],
           appBar: AppBar(title: const Text('Текст Fourth Screen')),
-          body: const Center(child: Text('Текст Fourth Screen'),),
+          body: Center(child: Text(Strings.longBodyText4, style: Theme.of(context).textTheme.headline4),),
         ));
   }
 }
