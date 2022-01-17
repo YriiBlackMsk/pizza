@@ -15,13 +15,23 @@ class NavigationDrawer extends StatefulWidget { //(стейтфул виджет
 class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс используется для отрисовки текущего состояния, реакция
   final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //скафолд всплывающие сообшения о переходе
 
-  int _selectedIndex = 0; ////состоит из 2х частей, это часть 1 - запоминает какую кнопку нажали в BottomNavigationbar
+  int _selectedIndex = 0; //состоит из 2х частей, это часть 1 - запоминает какую кнопку нажали в BottomNavigationbar
   void _onItemTapped(var text) {
   setState(() {
   _selectedIndex = text;
   });
   }
 
+/*отдельно вынесенная функция аппбар для удобства не работает с текстовой кнопкой
+  PreferredSizeWidget _appBar() => AppBar(
+    title: const Text('Текст AppBar '), //текст заголовка аппбар
+    actions: [ //икноки аппбар
+      IconButton(icon: const Icon(Icons.add_call), tooltip: 'Уведомления', onPressed: () {},),
+      IconButton(icon: const Icon(Icons.settings),tooltip: 'Уведомления', onPressed: () {},),
+      TextButton (child: const Text ('Выход'), onPressed: () {},),
+    ],
+  );
+*/
   @override
   Widget build(BuildContext context) {
     final ButtonStyle buttonStyle = TextButton.styleFrom(
@@ -31,9 +41,13 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
       drawerDragStartBehavior: DragStartBehavior.down, //скорость вытаскивания ящика, стоит более быстрое открывание
       drawerEdgeDragWidth: 70, //расстояние от левого края откуда начинает работать возможность вытащить ящик
 
-      body: const Center(
-          child: Text(Strings.longBodyText1),), //текст глвной страницы
-      appBar: AppBar(
+      body: const SingleChildScrollView(
+        child: Center(
+            child: Text(Strings.longBodyText1),),
+      ), //текст глвной страницы
+
+      // appBar: _appBar(), //хедер
+      appBar: AppBar( //локальный вариант, вынесена в отдельную функцию
         title: const Text('Текст AppBar '), //текст заголовка аппбар
         actions: <Widget>[ //икноки аппбар
           IconButton(onPressed: () {}, icon: const Icon(Icons.add_call)),
@@ -41,6 +55,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
           TextButton(onPressed: () {}, child: const Text('Выход'), style: buttonStyle),
         ],
       ),
+
       drawer: SizedBox(
           width: 250,
         child: Drawer( //бургер
@@ -126,9 +141,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
            ],
           ),
         ),
-      ),
+      ), //бургер
 
-     persistentFooterButtons: [ //футер
+     persistentFooterButtons: [ //футер три кнопки
       Row(
         children: [
           Expanded(
@@ -163,12 +178,14 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
         ],
       ),
      ],
+
       bottomNavigationBar: BottomNavigationBar(items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная страница'),
         BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Позвонить'),
       ],
           currentIndex: _selectedIndex, onTap: _onItemTapped //состоит из 2х частей, это часть 2 - запоминает какую кнопку нажали в BottomNavigationbar
-      ),
+      ), //нижние две кнопки
+
     );
   }
 }
