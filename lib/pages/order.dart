@@ -1,12 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'; //библиотека с дизайном от андроид
 import 'package:google_fonts/google_fonts.dart'; //библиотека со шрифтами от гугл
 import 'package:sliding_switch/sliding_switch.dart'; //библиотека для кнопки (переключателя (теста)
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:intl/intl.dart'; // библиотека также определяет классы DateFormat , NumberFormat и BidiFormatter .
 
-void main() {
-  runApp(const PizzaCalculatorScreen());
-}
+// void main() {
+//   runApp(const PizzaCalculatorScreen());
+// }
 
 class PizzaCalculatorScreen extends StatefulWidget {
   const PizzaCalculatorScreen({Key? key}) : super(key: key);
@@ -183,6 +184,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                           color: Color.fromRGBO(38, 50, 56, 1)))),
 
               RadioListTile<Sauce>(
+                controlAffinity: ListTileControlAffinity.trailing, //радиобаттон слева
                 title: const Text ('Острый',
                     style: TextStyle(
                         fontStyle: FontStyle.normal,
@@ -204,6 +206,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
               ),
 
               RadioListTile<Sauce>(
+                controlAffinity: ListTileControlAffinity.trailing, //радиобаттон слева
                 title: const Text ('Кисло-сладкий',
                   style: TextStyle(
                       fontStyle: FontStyle.normal,
@@ -225,6 +228,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
               ),
 
               RadioListTile<Sauce>(
+                controlAffinity: ListTileControlAffinity.trailing, //радиобаттон слева
                 title: const Text ('Сырный',
                     style: TextStyle(
                     fontStyle: FontStyle.normal,
@@ -320,9 +324,11 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                    borderRadius: BorderRadius.circular(36)),
                   child:Text('${_calcCost()} руб.',
                     style: const TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF000000)),
-                    textAlign: TextAlign.center,
+                     //выравнивание по второстепенной оси (в зависимости от row или column)
+                     fontWeight: FontWeight.w800,
+                     fontSize: 16,
+                     color: Color(0xFF000000)),
+                     textAlign: TextAlign.center,
                   ),
                 ),
               ),
@@ -330,7 +336,9 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
               const SizedBox(height: 20),
 
               SizedBox(width: 154, height: 42, child:
-                ElevatedButton(onPressed: () {},
+                ElevatedButton(onPressed: () {
+                  Navigator.pushNamed(context, '/1'); //переход на страницу два
+                },
                   child: const Text('Заказать'),
                   style: ElevatedButton.styleFrom( //формат кнопка
                     primary: const Color(0xFF0079D0), //цвет
@@ -340,6 +348,23 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                   ),
                 ),
               ),
+
+              const SizedBox(height: 20),
+
+              SizedBox(width: 40, height: 40, child:
+                ElevatedButton(onPressed: () {
+                  Navigator.pushNamed(context, '/'); //переход на страницу два
+                },
+                  child: const Text('X'),
+                  style: ElevatedButton.styleFrom( //формат кнопка
+                    primary: const Color.fromRGBO(255, 167, 153, 1), //цвет
+                    shape: RoundedRectangleBorder( //форма Rectangle-прямоугольник
+                      borderRadius: BorderRadius.circular(22.0), //радиус скргленный
+                    ),
+                  ),
+                ),
+              ),
+
               const SizedBox(height: 30),
            ],
           ),

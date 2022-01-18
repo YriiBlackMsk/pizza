@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart'; //подключение библиотеки с дизайном от андроид
 import 'package:google_fonts/google_fonts.dart'; //подключение библиотеки со шрифтами от гугл
 
-void main() { //запуск программы
-  runApp(const MyApp());
-}
+// void main() { //запуск программы
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class RegPage extends StatelessWidget {
+  const RegPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,8 @@ class MyApp extends StatelessWidget {
 
                 //поле ввода почты
                 const TextField(
-                  obscureText: true, //скрыть пароль при введении
+                  obscureText: false, //скрыть пароль при введении
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFeceff1),
@@ -163,15 +164,17 @@ class MyApp extends StatelessWidget {
 
                 //кнопка, добавить остальные атрибуты шрифта
                 SizedBox(width: 154, height: 42, child:
-                ElevatedButton(onPressed: () {},
-                  child: const Text('Отправить код'),
-                  style: ElevatedButton.styleFrom( //формат кнопка
-                    primary: const Color(0xFF0079D0), //цвет
-                    shape: RoundedRectangleBorder( //форма Rectangle-прямоугольник
-                      borderRadius: BorderRadius.circular(22.0), //радиус скргленный
+                  ElevatedButton(onPressed: () {
+                    Navigator.pushNamed(context, '/'); //переходит на страницу регистрации
+                  },
+                    child: const Text('Отправить код'),
+                    style: ElevatedButton.styleFrom( //формат кнопка
+                      primary: const Color(0xFF0079D0), //цвет
+                      shape: RoundedRectangleBorder( //форма Rectangle-прямоугольник
+                        borderRadius: BorderRadius.circular(22.0), //радиус скргленный
+                      ),
                     ),
                   ),
-                ),
                 ),
 
                 const SizedBox(height: 84,), //отступ

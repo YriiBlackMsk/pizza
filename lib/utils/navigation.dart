@@ -43,8 +43,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
 
       body: const SingleChildScrollView(
         child: Center(
-            child: Text(Strings.longBodyText1),),
-      ), //текст глвной страницы
+            child: Text(Strings.longBodyText1),), //текст глвной страницы
+      ),
 
       // appBar: _appBar(), //хедер
       appBar: AppBar( //локальный вариант, вынесена в отдельную функцию
@@ -52,7 +52,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
         actions: <Widget>[ //икноки аппбар
           IconButton(onPressed: () {}, icon: const Icon(Icons.add_call)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
-          TextButton(onPressed: () {}, child: const Text('Выход'), style: buttonStyle),
+          TextButton(onPressed: () {
+            Navigator.pushNamed(context, '/'); //переход на страницу регистрации
+           }, child: const Text('Выход'), style: buttonStyle),
         ],
       ),
 
@@ -179,13 +181,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
       ),
      ],
 
-      bottomNavigationBar: BottomNavigationBar(items: const [
+      bottomNavigationBar: BottomNavigationBar(items: const [ //нижние две кнопки
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная страница'),
         BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Позвонить'),
       ],
           currentIndex: _selectedIndex, onTap: _onItemTapped //состоит из 2х частей, это часть 2 - запоминает какую кнопку нажали в BottomNavigationbar
-      ), //нижние две кнопки
-
+      ),
     );
   }
 }

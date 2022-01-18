@@ -1,11 +1,14 @@
 //1.Подключаем библиотеки и ссылки на другие страницы приложения
 import 'package:flutter/material.dart'; //подключение библиотеки с дизайном от андроида
+import 'package:pizza/pages/page1.dart';
+import 'package:pizza/pages/reg.dart';
 // import 'package:google_fonts/google_fonts.dart';
-import 'package:pizza/navigation.dart';
-import 'package:pizza/second_screen.dart';
-import 'package:pizza/third_screen.dart';
-import 'package:pizza/fourth_screen.dart';
-import 'package:pizza/fifth_screen.dart';
+import 'package:pizza/utils/navigation.dart';
+import 'package:pizza/pages/order.dart';
+import 'package:pizza/pages/second_screen.dart';
+import 'package:pizza/pages/third_screen.dart';
+import 'package:pizza/pages/fourth_screen.dart';
+import 'package:pizza/pages/fifth_screen.dart';
 import 'package:pizza/utils/global_theme.dart';
 
 //2.Активируем запуск приложения
@@ -20,15 +23,22 @@ class MyApp extends StatelessWidget { //1 класс используется д
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //initialRoute: '/', //индексная страница, может быть либо она, либо home см. выше, на этом баг надо разбираться
+      title: 'Pizza App', //?
+      // initialRoute: '/', //индексная страница, может быть либо она, либо home
       routes: { //прописываем маршруты для страниц
+        // '/' : (context) => const MainScreen(),
+        '/1': (context) => const NavigationDrawer(),
         '/2': (context) => const SecondScreen(),
         '/3': (context) => const ThirdScreen(),
         '/4': (context) => const FourthScreen(),
         '/5': (context) => const FifthScreen(),
+        '/6': (context) => const RegPage(),
+        '/7': (context) => const PizzaCalculatorScreen(),
+
+
+
     },
-      title: "Имя приложения", //за что отвечает???
-      theme: globalTheme(), //глобальный вариант темы, настройка в отдельном файле global_theme
+       theme: globalTheme(), //глобальный вариант темы, настройка в отдельном файле global_theme
         /*theme: ThemeData( //локальный вариант темы
         fontFamily: 'Georgia',
         splashColor: Colors.yellow,
@@ -48,7 +58,7 @@ class MyApp extends StatelessWidget { //1 класс используется д
       ),
       */
       debugShowCheckedModeBanner: false, //снимает попдис debag
-      home: const MainScreen(), //путь до галвной страницы
+      home: const PizzaStartPage(), //путь до галвной страницы
     );
   }
 }

@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart'; //подключение библиотеки с дизайном от андроид
 import 'package:google_fonts/google_fonts.dart'; //подключение библиотеки со шрифтами от гугл
-//тема не работает
-// ThemeData themeData(BuildContext context) {
-//   return ThemeData(
-//       textTheme: GoogleFonts.macondoTextTheme().copyWith(
-//         bodyText1: TextStyle(color: Colors.red,fontSize: 32) //test
-//       ),
-//   );
+
+// void main() { //запуск программы
+//   runApp(const MyApp());
 // }
-//тема
 
-void main() { //запуск программы
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class PizzaStartPage extends StatelessWidget {
+  const PizzaStartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +90,9 @@ class MyApp extends StatelessWidget {
                   const SizedBox(height: 28,), //отступ
                   //кнопка, добавить остальные атрибуты шрифта
                   SizedBox(width: 154, height: 42, child:
-                    ElevatedButton(onPressed: () {},
+                    ElevatedButton(onPressed: () {
+                      Navigator.pushNamed(context, '/7'); //переход на страницу калькулятора
+                    },
                       child: const Text('Войти'),
                       style: ElevatedButton.styleFrom( //формат кнопка
                         primary: const Color(0xFF0079D0), //цвет
@@ -112,12 +105,16 @@ class MyApp extends StatelessWidget {
                  const SizedBox(height: 62,), //отступ
                  //ссылка
                  InkWell(child: const Text('Регистрация',
-                   style: linkTextStyle,), onTap: () {}),
+                   style: linkTextStyle,), onTap: () {
+                    Navigator.pushNamed(context, '/6'); //переход на страницу регистрации
+                 }),
 
                  const SizedBox(height: 19,), //отступ
                  //ссылка
                  InkWell(child: const Text('Забыли пароль?',
-                   style: linkTextStyle,), onTap: () {}),
+                   style: linkTextStyle,), onTap: () {
+                    Navigator.pushNamed(context, '/6'); //переход на страницу реистрации
+                 }),
 
                  const SizedBox(height: 84,), //отступ
             ],  //Children
