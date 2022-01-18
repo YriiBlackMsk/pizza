@@ -13,7 +13,10 @@ class NavigationDrawer extends StatefulWidget { //(стейтфул виджет
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс используется для отрисовки текущего состояния, реакция
+
   final _messengerKey = GlobalKey<ScaffoldMessengerState>(); //скафолд всплывающие сообшения о переходе
+
+  bool _isDarkTheme = false;
 
   int _selectedIndex = 0; //состоит из 2х частей, это часть 1 - запоминает какую кнопку нажали в BottomNavigationbar
   void _onItemTapped(var text) {
@@ -23,12 +26,18 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
   }
 
 /*отдельно вынесенная функция аппбар для удобства не работает с текстовой кнопкой
-  PreferredSizeWidget _appBar() => AppBar(
+  PreferredSizeWidget _appBar() => AppBar( //локальный вариант, вынесена в отдельную функцию
     title: const Text('Текст AppBar '), //текст заголовка аппбар
-    actions: [ //икноки аппбар
-      IconButton(icon: const Icon(Icons.add_call), tooltip: 'Уведомления', onPressed: () {},),
-      IconButton(icon: const Icon(Icons.settings),tooltip: 'Уведомления', onPressed: () {},),
-      TextButton (child: const Text ('Выход'), onPressed: () {},),
+    actions: <Widget>[ //икноки аппбар
+      IconButton(onPressed: () {}, icon: const Icon(Icons.add_call)),
+      IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+      ElevatedButton(onPressed: () {
+        Navigator.pushNamed(context, '/1'); //переход на страницу два
+      },
+        child: const Text('Заказать'),
+        style: ElevatedButton.styleFrom( //формат кнопка
+          ),
+        ),
     ],
   );
 */
@@ -46,8 +55,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
             child: Text(Strings.longBodyText1),), //текст глвной страницы
       ),
 
-      // appBar: _appBar(), //хедер
-      appBar: AppBar( //локальный вариант, вынесена в отдельную функцию
+      appBar: AppBar(//_appBar(), //локальный вариант, вынесена в отдельную функцию
         title: const Text('Текст AppBar '), //текст заголовка аппбар
         actions: <Widget>[ //икноки аппбар
           IconButton(onPressed: () {}, icon: const Icon(Icons.add_call)),
@@ -140,7 +148,17 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
                 //   const SnackBar(content: Text('Переход в каталог')));
               },
             ),
-           ],
+
+            SwitchListTile(
+              title: const Text('Темная тема'),
+                value: _isDarkTheme,
+                onChanged: (val) {
+                setState(() {
+                  _isDarkTheme = !_isDarkTheme;
+                  if (_isDarkTheme) {}
+                });
+              }),
+            ],
           ),
         ),
       ), //бургер

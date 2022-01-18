@@ -23,36 +23,4 @@ ThemeData globalTheme() => ThemeData( //Настройка темы (типа cs
     bodyText1: TextStyle(fontSize: 15.0, fontFamily: 'Hind'),
     bodyText2: TextStyle(fontSize: 20.0, fontFamily: 'Hind'),
   ),
-
 );
-
-
-/*
-class ThemesApp extends StatelessWidget {
-  const ThemesApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ThemesScreen(),
-    );
-  }
-}
-
-
-class ThemesScreen extends StatefulWidget {
-  const ThemesScreen({Key? key}) : super(key: key);
-
-  @override
-  _ThemesScreenState createState() => _ThemesScreenState();
-}
-
-class _ThemesScreenState extends State<ThemesScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold( //каракас экрана
-
-    );
-  }
-}
-*/

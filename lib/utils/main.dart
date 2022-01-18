@@ -34,9 +34,6 @@ class MyApp extends StatelessWidget { //1 класс используется д
         '/5': (context) => const FifthScreen(),
         '/6': (context) => const RegPage(),
         '/7': (context) => const PizzaCalculatorScreen(),
-
-
-
     },
        theme: globalTheme(), //глобальный вариант темы, настройка в отдельном файле global_theme
         /*theme: ThemeData( //локальный вариант темы
