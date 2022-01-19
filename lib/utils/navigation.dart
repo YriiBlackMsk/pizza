@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/gestures.dart';
+import 'package:pizza/pages/first_screen.dart';
 import 'package:pizza/utils/strings.dart';
 
 //страница навигации
@@ -44,16 +45,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
   @override
   Widget build(BuildContext context) {
     final ButtonStyle buttonStyle = TextButton.styleFrom(
-        primary: Theme.of(context).colorScheme.onPrimary);
+         primary: Theme.of(context).colorScheme.onPrimary//подсветка белым текстовой кнопки в аппбаре
+    );
     return Scaffold(
-      backgroundColor: Colors.lightGreenAccent[200], //цвет бэкграунда главного экрана
+      //backgroundColor: Colors.green, //цвет нижней панели три кнопки и/или бэкграунда главного экрана
       drawerDragStartBehavior: DragStartBehavior.down, //скорость вытаскивания ящика, стоит более быстрое открывание
-      drawerEdgeDragWidth: 70, //расстояние от левого края откуда начинает работать возможность вытащить ящик
-
-      body: const SingleChildScrollView(
-        child: Center(
-            child: Text(Strings.longBodyText1),), //текст глвной страницы
-      ),
+      drawerEdgeDragWidth: 70, //расстояние от левого края до места откуда начинает работать возможность вытащить ящик
 
       appBar: AppBar(//_appBar(), //локальный вариант, вынесена в отдельную функцию
         title: const Text('Текст AppBar '), //текст заголовка аппбар
@@ -66,10 +63,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
         ],
       ),
 
-      drawer: SizedBox(
+      drawer: SizedBox(//бургер
           width: 250,
-        child: Drawer( //бургер
-          backgroundColor: Colors.white,
+        child: Drawer(
+          //backgroundColor: Colors.white, //если включить, то при переключении в режим dark на белом не видно белый текст
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -163,13 +160,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
         ),
       ), //бургер
 
+      body: const FirstScreen(),
+      /*//локальный вариант для первой страницы
+       body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+             Text(Strings.longBodyText1, style: Theme.of(context).textTheme.headline5),
+             // Container(
+             //  height: 100,
+             //   color: Theme.of(context).colorScheme.secondary,
+             // ),
+            ],
+          ), //текст глвной страницы
+        ),
+       ),
+        */
+
      persistentFooterButtons: [ //футер три кнопки
       Row(
         children: [
           Expanded(
             child: IconButton(
-            splashColor: Colors.blue,
-            color: Colors.green,
+              color: Theme.of(context).colorScheme.primary, //цвет кнопки без нажатия - глобальный цвет кнопок, для локального (color: Colors.red),
+            splashColor: Colors.blue, //цвет кнопки при нажатии коротко
+            highlightColor: Theme.of(context).colorScheme.secondary, //цвет кнопки при удержании
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Контакты')));
@@ -177,8 +192,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
               icon: const Icon(Icons.work)),
           ),
           Expanded(child: IconButton(
-            color: Colors.green,
+              color: Theme.of(context).colorScheme.primary,
             splashColor: Colors.blue,
+            highlightColor: Theme.of(context).colorScheme.secondary,
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text(' E-mail')));
@@ -186,9 +202,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
             icon: const Icon(Icons.mail)),
           ),
           Expanded(child:IconButton(
+              color: Theme.of(context).colorScheme.primary,
             splashColor: Colors.blue,
-            color: Colors.green,
-            highlightColor: Colors.white,
+            highlightColor: Theme.of(context).colorScheme.secondary,
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Chat')));
@@ -199,10 +215,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
       ),
      ],
 
-      bottomNavigationBar: BottomNavigationBar(items: const [ //нижние две кнопки
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная страница'),
-        BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Позвонить'),
-      ],
+      bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor, //бэкграунд кнопок в подвале задется отдельно
+          items: const [ //нижние две кнопки
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная страница'),
+            BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Позвонить'),
+          ],
           currentIndex: _selectedIndex, onTap: _onItemTapped //состоит из 2х частей, это часть 2 - запоминает какую кнопку нажали в BottomNavigationbar
       ),
     );

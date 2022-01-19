@@ -14,14 +14,15 @@ class _FifthScreenState extends State<FifthScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.white,
+          //backgroundColor: Colors.white, //локальный бэкграунд пятого жкрана
           appBar: AppBar(title: const Text('Текст Fifth Screen'),),
           body: Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 40),
-            child: SingleChildScrollView(
+             child: SingleChildScrollView(//локальный скроллинг
                 child: Center(
                   child: Text(Strings.longBodyText5, style: Theme.of(context).textTheme.headline5),)),
-          ),
-        ));
+        ),
+      ),
+    );
   }
 }

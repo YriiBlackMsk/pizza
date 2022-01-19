@@ -65,7 +65,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
           ),
         ),
       home: Scaffold(
-        backgroundColor: const Color(0xffffffff),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor, //установка цвета общего фона//локально backgroundColor: const Color(0xffffffff),
         body: SingleChildScrollView(
           child: Column(
             children: [

@@ -25,7 +25,7 @@ class RegPage extends StatelessWidget {
         ),
       ),
       home: Scaffold( //общий каркас для контейнеров и т.п.
-        backgroundColor: const Color(0xffffffff), //установка цвета общего фона
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor, //установка цвета общего фона//локально backgroundColor: const Color(0xffffffff),
         body: Container( //контейнер для наполнения содержимым
           padding: const EdgeInsets.symmetric(horizontal: 10), //симметричный горизонтальный отступ
           child: SingleChildScrollView( //прокрутка страницы содержимого внутри скобок

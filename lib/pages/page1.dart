@@ -32,13 +32,13 @@ class PizzaStartPage extends StatelessWidget {
                   Theme.of(context).textTheme,
              ),
          ),
-    home: Scaffold( //общий каркас для контейнеров и т.п.
-      backgroundColor: const Color(0xffffffff), //установка цвета общего фона
-        body: Container( //контейнер для наполнения содержимым
-          padding: const EdgeInsets.symmetric(horizontal: 50), //симметричный горизонтальный отступ
-          child: SingleChildScrollView( //прокрутка страницы содержимого внутри скобок
-            child: Column( //выравнивание сожержимого в колонку
-               children: [ //перечисление содержимого внутри колонки установлено по умолчанию константой
+      home: Scaffold( //общий каркас для контейнеров и т.п.
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor, //установка цвета общего фона//локально backgroundColor: const Color(0xffffffff),
+          body: Container( //контейнер для наполнения содержимым
+            padding: const EdgeInsets.symmetric(horizontal: 50), //симметричный горизонтальный отступ
+            child: SingleChildScrollView( //прокрутка страницы содержимого внутри скобок
+              child: Column( //выравнивание сожержимого в колонку
+                 children: [ //перечисление содержимого внутри колонки установлено по умолчанию константой
 
                   const SizedBox(height: 81), //отступ сверху
                   //логотип

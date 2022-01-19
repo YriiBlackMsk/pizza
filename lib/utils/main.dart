@@ -1,5 +1,6 @@
 //1.Подключаем библиотеки и ссылки на другие страницы приложения
 import 'package:flutter/material.dart'; //подключение библиотеки с дизайном от андроида
+import 'package:pizza/pages/first_screen.dart';
 import 'package:pizza/pages/page1.dart';
 import 'package:pizza/pages/reg.dart';
 // import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget { //1 класс используется д
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pizza App', //?
+      title: 'Pizza App', //название приожения для десктопа
+      debugShowCheckedModeBanner: false, //снимает попдис debag
       // initialRoute: '/', //индексная страница, может быть либо она, либо home
       routes: { //прописываем маршруты для страниц
         // '/' : (context) => const MainScreen(),
@@ -34,27 +36,28 @@ class MyApp extends StatelessWidget { //1 класс используется д
         '/5': (context) => const FifthScreen(),
         '/6': (context) => const RegPage(),
         '/7': (context) => const PizzaCalculatorScreen(),
-    },
-       theme: globalTheme(), //глобальный вариант темы, настройка в отдельном файле global_theme
-        /*theme: ThemeData( //локальный вариант темы
-        fontFamily: 'Georgia',
-        splashColor: Colors.yellow,
+        '/8': (context) => const FirstScreen(),
+      },
+       theme: globalTheme(), //глобальный вариант темы, настройка в отдельном файле global_theme не работает
+      /*theme: ThemeData( //локальная тема
+        fontFamily: 'Georgia', //стиль текста глобально
+        splashColor: Colors.blue, //цвет нажатия на кнопку волна нарастающая
 
         colorScheme: ColorScheme.fromSwatch(
-          brightness: Brightness.light,
-          primarySwatch: Colors.orange,
+          brightness: Brightness.light,//переключение с dark контрасный на light  меняется на аппбар и кнопках, также в бургере, текст не читаем на светлом фоне
+          primarySwatch: Colors.deepPurple, //цвет бэкграунда аппбара и футера (BottomNavigationBarItem)
         ).copyWith(
-          secondary: Colors.green,
+          secondary: Colors.red, //цвет кнопок подвала в основном
         ),
 
-        textTheme: const TextTheme(
+        textTheme: const TextTheme( //переопределение темы
           headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
           headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
       ),
       */
-      debugShowCheckedModeBanner: false, //снимает попдис debag
+
       home: const PizzaStartPage(), //путь до галвной страницы
     );
   }

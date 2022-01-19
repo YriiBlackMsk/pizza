@@ -1,26 +1,24 @@
 //Настройки темы для всего приложения
 import 'package:flutter/material.dart';
 
-final fPrimaryColor = Colors.green;//не работает
-
 ThemeData globalTheme() => ThemeData( //Настройка темы (типа css, цвет, стиль и т.п.) всего приложения
-  fontFamily: 'Arial Black', //текст глобально
-  splashColor: Colors.red, //цвет при нажатии кнопки типа волны глобально
+  //глобальный вариант темы
+  scaffoldBackgroundColor: const Color.fromRGBO(255, 255, 255, 1),//бэкграунд всех страниц, кроме подвала
+  fontFamily: 'Georgia', //стиль текста глобально
+  splashColor: Colors.blue, //цвет нажатия на кнопку волна нарастающая
 
   colorScheme: ColorScheme.fromSwatch(
-    brightness: Brightness.light,//не работает
-    primarySwatch: Colors.red, //
+    brightness: Brightness.light,//переключение с dark контрасный на light  меняется на аппбар и кнопках, также в бургере, текст не читаем на светлом фоне
+    primarySwatch: Colors.deepPurple, //цвет бэкграунда аппбара и футера (BottomNavigationBarItem)
   ).copyWith(
-    secondary: Colors.green,
+    secondary: Colors.red, //цвет кнопок подвала в основном
   ),
-//переопределение типовых значений в шаблонных стилях см.документации, для локальных вариантов
-  textTheme: const TextTheme(
-    headline1: TextStyle(fontSize: 50.0, fontWeight: FontWeight.normal),
-    headline2: TextStyle(fontFamily: 'Times New Roman', fontSize: 40.0, fontStyle: FontStyle.italic),
-    headline3: TextStyle(fontSize: 30.0, fontStyle: FontStyle.italic),
-    headline4: TextStyle(fontSize: 20.0, fontStyle: FontStyle.normal),
-    headline5: TextStyle(fontSize: 10.0, fontStyle: FontStyle.italic),
-    bodyText1: TextStyle(fontSize: 15.0, fontFamily: 'Hind'),
-    bodyText2: TextStyle(fontSize: 20.0, fontFamily: 'Hind'),
+
+  textTheme: const TextTheme( //переопределение темы
+    headline1: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold),
+    headline2: TextStyle(fontSize: 14.0, fontStyle: FontStyle.italic),
+    headline3: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+    headline4: TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic),
+    bodyText2: TextStyle(fontSize: 10.0, fontFamily: 'Hind'),
   ),
 );

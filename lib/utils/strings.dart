@@ -19,4 +19,19 @@ class Strings {
       'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
       'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
       'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n' 'Последний абзац ';
+static const longBodyText8= 'Текст страницы 5 \n Длинный текст '
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'      'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n'
+    'Loooong Длинный текст Loooong Длинный текст' 'Loooong Длинный текст Loooong Длинный текст\n\n' 'Последний абзац ';
 }

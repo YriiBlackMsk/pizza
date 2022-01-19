@@ -14,7 +14,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.teal[200],
+          //backgroundColor: Colors.teal[200],
           appBar: AppBar(title: const Text('Текст Third Screen'),),
           body: Center(child: Text(Strings.longBodyText3, style: Theme.of(context).textTheme.headline3),),
         ));
