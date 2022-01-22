@@ -1,4 +1,4 @@
-//1.Подключаем библиотеки и ссылки на другие страницы приложения test
+//1.Подключаем библиотеки и ссылки на другие страницы приложения
 import 'package:flutter/material.dart'; //подключение библиотеки с дизайном от андроида
 import 'package:pizza/pages/first_screen.dart';
 import 'package:pizza/pages/page1.dart';
