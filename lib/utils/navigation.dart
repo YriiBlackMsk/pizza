@@ -146,6 +146,16 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
               },
             ),
 
+              ListTile(
+                leading: const Icon(Icons.settings), //иконка
+                title: const Text('SixthScreen'), //заголовок
+                onTap: () { //обработчик
+                  Navigator.pushNamed(context, '/9');
+                  // _messengerKey.currentState!.showSnackBar(
+                  //   const SnackBar(content: Text('Переход в каталог')));
+                },
+              ),
+
             SwitchListTile(
               title: const Text('Темная тема'),
                 value: _isDarkTheme,
