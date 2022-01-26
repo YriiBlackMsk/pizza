@@ -19,8 +19,16 @@ class _FirstScreenState extends State<FirstScreen> {
             child: Center(
              child: Column(
                children: [
-                 Text(Strings.longBodyText8, style: Theme.of(context).textTheme.headline2),//контент боди второго экрана, забирает данные с файла стрингс, для мультиязычной поддержки и редактирования
-                  // Container(
+                 Text('text', style: GoogleFonts.oswald()),
+                 Text(Strings.longBodyText8, style: GoogleFonts.getFont('Lato')),//динамически подгружаем
+                 Text(Strings.longBodyText8, style: GoogleFonts.lato(
+                   textStyle: const TextStyle(color: Colors.blue, letterSpacing: 2.5)
+                 )),
+                 Text(Strings.longBodyText8, style: GoogleFonts.lato(
+                     textStyle: Theme.of(context).textTheme.headline6,
+                     fontSize: 48),
+                 ),
+                 // Container(
                   //  height: 100,
                   //   color: Theme.of(context).colorScheme.secondary,
                   // ),

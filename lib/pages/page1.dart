@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; //подключение библиотеки с дизайном от андроид
 import 'package:google_fonts/google_fonts.dart'; //подключение библиотеки со шрифтами от гугл
+import 'package:shared_preferences/shared_preferences.dart'; //работа с файлами ключ/значение на клиенте
 
 // void main() { //запуск программы
 //   runApp(const MyApp());

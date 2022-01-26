@@ -12,6 +12,7 @@ import 'package:pizza/pages/third_screen.dart';
 import 'package:pizza/pages/fourth_screen.dart';
 import 'package:pizza/pages/fifth_screen.dart';
 import 'package:pizza/utils/global_theme.dart';
+import 'package:pizza/pages/seventh_screen.dart';
 
 //2.Активируем запуск приложения
 void main() {
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget { //1 класс используется д
         '/7': (context) => const PizzaCalculatorScreen(),
         '/8': (context) => const FirstScreen(),
         '/9': (context) => const SixthScreen(),
-
+        '/10': (context) => const SeventhScreen(),
       },
        theme: globalTheme(), //глобальный вариант темы, настройка в отдельном файле global_theme не работает
       /*theme: ThemeData( //локальная тема

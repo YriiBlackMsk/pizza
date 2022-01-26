@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/gestures.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pizza/pages/first_screen.dart';
 import 'package:pizza/utils/strings.dart';
 
@@ -53,7 +54,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
       drawerEdgeDragWidth: 70, //расстояние от левого края до места откуда начинает работать возможность вытащить ящик
 
       appBar: AppBar(//_appBar(), //локальный вариант, вынесена в отдельную функцию
-        title: const Text('Текст AppBar '), //текст заголовка аппбар
+        title: Text('Text AppBar ', style: GoogleFonts.dancingScript(),), //текст заголовка аппбар
         actions: <Widget>[ //икноки аппбар
           IconButton(onPressed: () {}, icon: const Icon(Icons.add_call)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
@@ -151,6 +152,16 @@ class _NavigationDrawerState extends State<NavigationDrawer> { //2 класс и
                 title: const Text('SixthScreen'), //заголовок
                 onTap: () { //обработчик
                   Navigator.pushNamed(context, '/9');
+                  // _messengerKey.currentState!.showSnackBar(
+                  //   const SnackBar(content: Text('Переход в каталог')));
+                },
+              ),
+
+              ListTile(
+                leading: const Icon(Icons.settings), //иконка
+                title: const Text('SeventhScreen'), //заголовок
+                onTap: () { //обработчик
+                  Navigator.pushNamed(context, '/10');
                   // _messengerKey.currentState!.showSnackBar(
                   //   const SnackBar(content: Text('Переход в каталог')));
                 },
