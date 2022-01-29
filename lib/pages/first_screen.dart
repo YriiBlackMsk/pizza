@@ -14,7 +14,7 @@ class _FirstScreenState extends State<FirstScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          // backgroundColor: Colors.amber[50],//локальный бэкграунд первого экрана
+           //backgroundColor: Colors.amber[50],//локальный бэкграунд первого экрана
           body: SingleChildScrollView(
             child: Center(
              child: Column(

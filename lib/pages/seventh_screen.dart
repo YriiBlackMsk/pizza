@@ -1,6 +1,11 @@
+import 'dart:async'; //для работы с асинхронными операциями
+import 'dart:developer';
+import 'dart:io';//для работы с операциями ввода-вывода
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';//сохранеие в черном ящике устройства
+import 'package:path_provider/path_provider.dart';
 
+//класс отображения страницы
 class SeventhScreen extends StatefulWidget {
   const SeventhScreen({Key? key}) : super(key: key);
 
@@ -8,31 +13,112 @@ class SeventhScreen extends StatefulWidget {
   _SeventhScreenState createState() => _SeventhScreenState();
 }
 
-class _SeventhScreenState extends State<SeventhScreen> {
+class _SeventhScreenState extends State<SeventhScreen> {//класс состояния
+  String value = 'Тут будет значение'; //определили переменную для запписи в нее значений ключа
+  int _counter = 0;
+
+  @override
+  void initState() { //инициализирует состояние виджета
+    super.initState();
+    _loadCounter();
+  }
+
+  void _loadCounter() async {//загружает текущее значеие счетчика из памяти телефона, не сбрасывается
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _counter = (prefs.getInt('counter') ?? 0);
+      prefs.setInt('counter', _counter);
+    });
+  }
+
+  void _incrementCounter() async { //увеличение счетчика на 1
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _counter = (prefs.getInt('counter') ?? 0) + 1;
+      prefs.setInt('counter', _counter);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-          //backgroundColor: Colors.amber[50],//локальный бэкграунд второго экрана
-          appBar: AppBar(title: const Text('Текст Second Screen'),), //заголовок второго экрана
-
+    return SafeArea( //отвечает за отображение страницы в видимых пределах в зависимости от устройства
+        child: Scaffold(//каркас для отображения страницы в привычном виде, а не в виде материал апп
+          appBar: AppBar(
+            title: const Text('Текст Seventh Screen'),), //заголовок второго экрана
           body: Center(
-            child: RaisedButton(
-              onPressed: _incrementCounter,
-              child: const Text('Increment Counter'),
-            ),
+            child: Column(
+              children: [
+                const SizedBox(height: 100),
+
+                Text(value, style: Theme.of(context).textTheme.headline6), //отображаемое значение
+
+                const SizedBox(height: 20),
+
+                ElevatedButton(
+                  child: const Text('Читать значение ключа Text_1'),
+                  onPressed: () async { //действие при нажатии асинхронное добавлено к функции т.к., есть внутри функции await
+                    SharedPreferences prefs = await SharedPreferences.getInstance(); //функция позволяющая использовать хранилище
+                    setState(() {//для обновления интерфейса после прочтения
+                      value = prefs.getString('Text_1') ?? 'NULL'; //указали переменную вэлью в которую положим данные из запроса, из функции в которую передаем ключ в кавычках по которому хотим получить данные, через вопросы указали, что показывать если ничего до этого не записывали
+                    });
+                  },
+                ),
+
+                const SizedBox(height: 20),
+
+                ElevatedButton(
+                  child: const Text('Записать значение 1'),
+                  onPressed: () async{
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.setString('Text_1', 'Значение 1'); //записываем значение по ключу в кавычках
+                    setState(() {
+                      value = prefs.getString('Text_1') ?? 'NULL';
+                    });
+                  },
+                ),
+
+                const SizedBox(height: 20),
+
+                ElevatedButton(
+                  child: const Text('Записать значение 2'),
+                  onPressed: () async{
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.setString('Text_1', 'Значение 2');
+                    setState(() {
+                      value = prefs.getString('Text_1') ?? 'NULL';
+                    });
+                  },
+                ),
+
+                const SizedBox(height: 20),
+
+                ElevatedButton(
+                  child: const Text('Удалить значение ключа Text_1'),
+                  onPressed: () async{
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.remove('Text_1');
+                    setState(() {
+                      value = prefs.getString('Text_1') ?? 'NULL';
+                    });
+                  },
+                ),
+
+                const SizedBox(height: 20),
+
+                Text('$_counter', style: const TextStyle(fontSize: 20),),
+              ],
+           ),
           ),
-        ),
+          floatingActionButton: FloatingActionButton(//кнопка добавляет +1
+            child: const Icon(Icons.add),
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+          ),
+        )
     );
   }
-
-  _incrementCounter() async {
-    SeventhScreen prefs = await SeventhScreen.getInstance();
-    int counter = (prefs.getInt('counter') ?? 0) + 1;
-    print('Pressed $counter times.');
-    await prefs.setInt('counter', counter);
-  }
 }
+
 /*
 class User {
   late String name;
