@@ -4,7 +4,7 @@ import 'package:pizza/pages/first_screen.dart';
 import 'package:pizza/pages/page1.dart';
 import 'package:pizza/pages/reg.dart';
 import 'package:pizza/pages/sixth_page.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pizza/utils/navigation.dart';
 import 'package:pizza/pages/order.dart';
 import 'package:pizza/pages/second_screen.dart';
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget { //1 класс используется д
         '/7': (context) => const PizzaCalculatorScreen(),
         '/8': (context) => const FirstScreen(),
         '/9': (context) => const SixthScreen(),
-        '/10': (context) => const SeventhScreen(),
+        '/10': (context) => SeventhScreen(storage: CounterStorage()),
       },
        theme: globalTheme(), //глобальный вариант темы, настройка в отдельном файле global_theme не работает
       /*theme: ThemeData( //локальная тема

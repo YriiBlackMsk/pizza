@@ -77,7 +77,7 @@ class _FlutterDemoState extends State<FlutterDemo> {
 class SeventhScreen extends StatefulWidget {
   const SeventhScreen({Key? key, required this.storage}) : super(key: key);
 
-  final CounterStorage;
+  final CounterStorage storage;
 
   @override
   _SeventhScreenState createState() => _SeventhScreenState();
