@@ -2,12 +2,8 @@ import 'package:flutter/material.dart'; //подключение библиот�
 import 'package:google_fonts/google_fonts.dart'; //подключение библиотеки со шрифтами от гугл
 import 'package:shared_preferences/shared_preferences.dart'; //работа с файлами ключ/значение на клиенте
 
-// void main() { //запуск программы
-//   runApp(const MyApp());
-// }
-
-class PizzaStartPage extends StatelessWidget {
-  const PizzaStartPage({Key? key}) : super(key: key);
+class PageOne extends StatelessWidget {
+  const PageOne({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

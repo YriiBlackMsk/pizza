@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'; //библиотека с дизайном от андроид
 import 'package:google_fonts/google_fonts.dart'; //библиотека со шрифтами от гугл
 import 'package:sliding_switch/sliding_switch.dart'; //библиотека для кнопки (переключателя (теста)
