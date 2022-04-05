@@ -1,4 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart'; //подключенные библиотеки
 import 'package:pizza/auth/reset_password.dart';
 import 'package:pizza/auth/signin_screen.dart';
 import 'package:flutter/material.dart';
